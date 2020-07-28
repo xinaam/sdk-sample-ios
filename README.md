@@ -41,7 +41,7 @@ Params:
 -   partnerCode : a valid partner code string
 -   environment : a MzaaloEnvironment enum with values STAGING or PRODUCTION
 -   onSuccess : Callback block for Success
--   onFailure : Callback block for Failure eturns an error String
+-   onFailure : Callback block for Failure returns an error String
 
 Example:
 
