@@ -1,4 +1,4 @@
-
+# Mzaalo IOS SDK
 This is the official documentation for the integration of Mzaalo iOS SDKs in any application with a valid partner code.
 
 Overview
@@ -81,6 +81,17 @@ Example:
     }) { (err) in
 		print(err)
     }
+
+The `MzaaloUser` object returned in the `onSuccess` callback of the `login` function has the following public fields:
+
+ - id: String
+ - firstName: String
+ - lastName: String
+ - email: String
+ - phone: String
+ - gender: String
+ - countryCode: String
+ - dob: String
 
 #### Logout
 
