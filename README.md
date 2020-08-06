@@ -117,9 +117,9 @@ Call this function if you want to fetch the balance of the user that is currentl
 
 Example:
 
-    Mzaalo.sharedInstance.getBalance(onSuccess: { (balance) in
+    Mzaalo.sharedInstance.getBalance(onSuccess: { (balance:Int) in
 		print(balance)
-    }, onFailure: { (err) in
+    }, onFailure: { (err:String) in
 		print(err)
     })
 
