@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MzaaloSDK
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

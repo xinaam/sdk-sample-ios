@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MzaaloSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
