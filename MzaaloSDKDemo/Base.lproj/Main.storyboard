@@ -42,17 +42,17 @@
                                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="9Zt-oa-s7z">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Zt-oa-s7z">
                                         <rect key="frame" x="25" y="248" width="364" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partner Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-Dq-489">
-                                                <rect key="frame" x="0.0" y="0.0" width="100.5" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="eros" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mh4-SM-6c2" customClass="PaddingTextField" customModule="MzaaloSDKDemo" customModuleProvider="target">
-                                                <rect key="frame" x="165.5" y="0.0" width="198.5" height="45"/>
+                                                <rect key="frame" x="187" y="0.0" width="177" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -66,17 +66,17 @@
                                             <constraint firstAttribute="height" constant="45" id="GRS-gE-ttC"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7gE-5n-QpH">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7gE-5n-QpH">
                                         <rect key="frame" x="25" y="303" width="364" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mzaalo Environment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBw-7B-9Wd">
-                                                <rect key="frame" x="0.0" y="0.0" width="162" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRg-97-UkT" customClass="PaddingTextField" customModule="MzaaloSDKDemo" customModuleProvider="target">
-                                                <rect key="frame" x="172" y="0.0" width="192" height="45"/>
+                                                <rect key="frame" x="187" y="0.0" width="177" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -91,7 +91,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMj-KG-kLP">
-                                        <rect key="frame" x="197" y="303" width="192" height="45"/>
+                                        <rect key="frame" x="212" y="303" width="177" height="45"/>
                                         <connections>
                                             <action selector="buttonEnvironMentAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hjP-Gs-j6K"/>
                                         </connections>
@@ -221,17 +221,17 @@
                                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="WVt-Bu-bVH">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WVt-Bu-bVH">
                                         <rect key="frame" x="25" y="248" width="364" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unique Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaA-hl-0Vr">
-                                                <rect key="frame" x="0.0" y="0.0" width="72" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MiF-Bw-BfM" customClass="PaddingTextField" customModule="MzaaloSDKDemo" customModuleProvider="target">
-                                                <rect key="frame" x="137" y="0.0" width="227" height="45"/>
+                                                <rect key="frame" x="187" y="0.0" width="177" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -245,17 +245,17 @@
                                             <constraint firstAttribute="height" constant="45" id="wsS-AM-cbg"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="1if-C1-XqD">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1if-C1-XqD">
                                         <rect key="frame" x="25" y="303" width="364" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserMeta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBk-8y-w3Q">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="67D-LS-fVN" customClass="PaddingTextField" customModule="MzaaloSDKDemo" customModuleProvider="target">
-                                                <rect key="frame" x="143" y="0.0" width="221" height="45"/>
+                                                <rect key="frame" x="187" y="0.0" width="177" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -998,7 +998,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTj-2R-oDK">
-                                        <rect key="frame" x="207" y="590.5" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="207" y="543" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1022,7 +1022,7 @@
                                     <constraint firstItem="ZhJ-1x-hS7" firstAttribute="centerX" secondItem="ChA-lQ-xJa" secondAttribute="centerX" id="X5E-am-7tf"/>
                                     <constraint firstItem="4PM-Ad-cKS" firstAttribute="width" secondItem="ChA-lQ-xJa" secondAttribute="width" multiplier="0.35" id="Xlw-GI-GFz"/>
                                     <constraint firstItem="3ba-My-nxd" firstAttribute="top" secondItem="qUf-6w-jFO" secondAttribute="bottom" constant="25" id="Zhf-UZ-NWI"/>
-                                    <constraint firstItem="KTj-2R-oDK" firstAttribute="top" secondItem="kjx-LW-Dgu" secondAttribute="bottom" multiplier="1.25" id="bZa-6f-whf"/>
+                                    <constraint firstItem="KTj-2R-oDK" firstAttribute="top" secondItem="kjx-LW-Dgu" secondAttribute="bottom" multiplier="1.15" id="bZa-6f-whf"/>
                                     <constraint firstItem="4PM-Ad-cKS" firstAttribute="top" secondItem="uBq-in-etg" secondAttribute="bottom" constant="30" id="bqC-Wy-5ah"/>
                                     <constraint firstItem="tFu-sG-Sbw" firstAttribute="top" secondItem="ChA-lQ-xJa" secondAttribute="top" id="dpz-nc-Bf8"/>
                                     <constraint firstItem="kjx-LW-Dgu" firstAttribute="width" secondItem="ChA-lQ-xJa" secondAttribute="width" multiplier="0.35" id="ePZ-Oo-Qr3"/>
