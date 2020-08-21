@@ -1,0 +1,31 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-module-flags: -target x86_64-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name MzaaloSDK
+import Foundation
+@_exported import MzaaloSDK
+import Swift
+public enum MzaaloEnvironment {
+  case PRODUCTION
+  case STAGING
+  public static func == (a: MzaaloSDK.MzaaloEnvironment, b: MzaaloSDK.MzaaloEnvironment) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@_hasMissingDesignatedInitializers final public class Mzaalo {
+  public static var sharedInstance: MzaaloSDK.Mzaalo {
+    get
+  }
+  final public func setupSDK(partnerCode: Swift.String, environment: MzaaloSDK.MzaaloEnvironment, onSuccess: @escaping () -> (), onFailure: @escaping (Swift.String) -> ())
+  final public func loggedInUser() -> MzaaloSDK.MzaaloUser?
+  final public func partnerCode() -> Swift.String?
+  final public func logOut()
+  final public func callApi(path: Swift.String, method: Swift.String, params: Foundation.NSDictionary?, onSuccess: @escaping (Foundation.NSDictionary) -> (), onFailure: @escaping (Swift.String) -> ())
+  final public func login(userId: Swift.String, userMeta: [Swift.String : Swift.String], onSuccess: @escaping (MzaaloSDK.MzaaloUser) -> (), onFailure: @escaping (Swift.String) -> ())
+  @objc deinit
+}
+public struct MzaaloUser : Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}

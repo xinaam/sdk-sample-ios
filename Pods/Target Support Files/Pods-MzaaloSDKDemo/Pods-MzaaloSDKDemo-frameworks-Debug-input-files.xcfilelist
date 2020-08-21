@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-MzaaloSDKDemo/Pods-MzaaloSDKDemo-frameworks.sh
+${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${PODS_ROOT}/MzaaloAuth/MzaaloSDK.framework
+${PODS_ROOT}/MzaaloRewards/MzaaloRewardsSDK.framework

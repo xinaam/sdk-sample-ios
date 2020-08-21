@@ -1,0 +1,22 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-module-flags: -target arm64-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name MzaaloRewardsSDK
+import Foundation
+@_exported import MzaaloRewardsSDK
+import MzaaloSDK
+import Swift
+public enum MzaaloRewardsAction : Swift.String {
+  case contentViewed
+  case checkedIn
+  case signedUp
+  case referralApplied
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension Mzaalo {
+  final public func registerRewardAction(action: MzaaloRewardsSDK.MzaaloRewardsAction, eventMeta: [Swift.String : Any]?, onSuccess: @escaping () -> (), onFailure: @escaping (Swift.String) -> ())
+  final public func getBalance(onSuccess: @escaping (Swift.Int) -> (), onFailure: @escaping (Swift.String) -> ())
+}

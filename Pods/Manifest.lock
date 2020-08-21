@@ -1,0 +1,25 @@
+PODS:
+  - DropDown (2.3.13)
+  - MzaaloAuth (0.0.5)
+  - MzaaloRewards (0.0.5):
+    - MzaaloAuth
+
+DEPENDENCIES:
+  - DropDown
+  - MzaaloAuth
+  - MzaaloRewards
+
+SPEC REPOS:
+  trunk:
+    - DropDown
+    - MzaaloAuth
+    - MzaaloRewards
+
+SPEC CHECKSUMS:
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  MzaaloAuth: 8b2631ec1e0793cc89f6e8480291f1c731e07634
+  MzaaloRewards: e131e3c6b7da7e7b833d9bb8d180ee691599f3ba
+
+PODFILE CHECKSUM: 7cd612b7bfc2477f1f7afd6df26f9b4c5d940fa2
+
+COCOAPODS: 1.8.4
