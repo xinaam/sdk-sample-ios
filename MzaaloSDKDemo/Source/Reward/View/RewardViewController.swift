@@ -27,17 +27,19 @@ class RewardViewController: BaseViewController {
     }
     func configUI(){
         self.hideKeyboardWhenTappedAround()
+        textFeildRewardActions.rightViewMode = .always
+        let viewImage = UIImageView.init(image: UIImage.init(named: "down-arrow"))
+        viewImage.tintColor = UIColor.label
+        textFeildRewardActions.rightView = viewImage
         dropDown.anchorView = buttonRewardsContent
         dropDown.dataSource = data
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-          print("Selected item: \(item) at index: \(index)")
+            print("Selected item: \(item) at index: \(index)")
             self.textFeildRewardActions.text = item
         }
         self.textFeildRewardActions.text = "SIGNED_UP"
         dropDown.width = textFeildRewardActions.frame.width
-        textFeildRewardActions.rightViewMode = .always
-        let viewImage = UIImageView.init(image: UIImage.init(named: "down-arrow"))
-        viewImage.tintColor = UIColor.label
+        
     }
     func registerReward(){
         var rewardAction: MzaaloRewardsAction!

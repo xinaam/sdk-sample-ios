@@ -49,7 +49,9 @@ class LoginViewController: BaseViewController {
             }
         }) { (err) in
             print(err)
+            DispatchQueue.main.async {
             self.showToast(message: err.debugDescription)
+            }
         }
     }
    
