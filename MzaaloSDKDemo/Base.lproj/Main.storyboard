@@ -246,16 +246,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1if-C1-XqD">
-                                        <rect key="frame" x="25" y="303" width="364" height="45"/>
+                                        <rect key="frame" x="25" y="303" width="364" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserMeta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBk-8y-w3Q">
-                                                <rect key="frame" x="0.0" y="0.0" width="177" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177" height="70"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="67D-LS-fVN" customClass="PaddingTextField" customModule="MzaaloSDKDemo" customModuleProvider="target">
-                                                <rect key="frame" x="187" y="0.0" width="177" height="45"/>
+                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="67D-LS-fVN" customClass="PaddingTextField" customModule="MzaaloSDKDemo" customModuleProvider="target">
+                                                <rect key="frame" x="182" y="0.0" width="0.0" height="70"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -264,13 +264,20 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PpD-IZ-LXk">
+                                                <rect key="frame" x="187" y="0.0" width="177" height="70"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="qCy-Lk-e61"/>
+                                            <constraint firstAttribute="height" constant="70" id="qCy-Lk-e61"/>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEm-r7-T1w">
-                                        <rect key="frame" x="114" y="398" width="186" height="45"/>
+                                        <rect key="frame" x="114" y="423" width="186" height="45"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="dLW-ty-mai"/>
@@ -325,6 +332,7 @@
                     <connections>
                         <outlet property="textFeildUniqueID" destination="MiF-Bw-BfM" id="jY7-36-5fV"/>
                         <outlet property="textFeildUserMeta" destination="67D-LS-fVN" id="RPp-iv-0h4"/>
+                        <outlet property="textViewuserMeta" destination="PpD-IZ-LXk" id="h9i-dQ-3cb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTh-fd-XXw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -409,7 +417,7 @@
                                                             <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x3Z-SE-hZs">
+                                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x3Z-SE-hZs">
                                                         <rect key="frame" x="15" y="520" width="384" height="130"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
@@ -424,7 +432,7 @@
                                                         <rect key="frame" x="25" y="670" width="364" height="40"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVZ-X5-QZy">
-                                                                <rect key="frame" x="0.0" y="0.0" width="178" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="364" height="40"/>
                                                                 <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <state key="normal" title="GO TO REWARDS">
                                                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -438,8 +446,8 @@
                                                                     <action selector="buttonRewardsAction:" destination="RiT-PM-Im2" eventType="touchUpInside" id="jKX-gw-UTL"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82e-Vw-XX6">
-                                                                <rect key="frame" x="186" y="0.0" width="178" height="40"/>
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82e-Vw-XX6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
                                                                 <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <state key="normal" title="GO TO PLAYER">
                                                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -598,9 +606,15 @@
                                                     <constraint firstItem="L5Z-Lp-hsM" firstAttribute="centerX" secondItem="26w-im-kFi" secondAttribute="centerX" id="M51-Dq-vFH"/>
                                                     <constraint firstItem="PEg-d9-RAN" firstAttribute="centerX" secondItem="26w-im-kFi" secondAttribute="centerX" id="Twf-RJ-J03"/>
                                                     <constraint firstItem="MBg-Yx-r5m" firstAttribute="centerX" secondItem="26w-im-kFi" secondAttribute="centerX" id="UuU-Rq-rxL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="L5Z-Lp-hsM" secondAttribute="bottom" constant="58" id="W1T-p1-eoC"/>
                                                     <constraint firstItem="L5Z-Lp-hsM" firstAttribute="width" secondItem="26w-im-kFi" secondAttribute="width" constant="-50" id="Zwf-Wm-IdP"/>
                                                     <constraint firstItem="MBg-Yx-r5m" firstAttribute="centerY" secondItem="26w-im-kFi" secondAttribute="centerY" multiplier="0.65" id="bLT-vD-vS8"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="subviews">
+                                                        <exclude reference="PEg-d9-RAN"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -985,7 +999,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Qxn-hY-A4r"/>
                                         </constraints>
-                                        <state key="normal" title="Fetch Reward">
+                                        <state key="normal" title="Fetch rewards">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>

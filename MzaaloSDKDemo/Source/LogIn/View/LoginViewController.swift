@@ -13,6 +13,8 @@ class LoginViewController: BaseViewController {
 
     @IBOutlet weak var textFeildUserMeta: PaddingTextField!
     @IBOutlet weak var textFeildUniqueID: PaddingTextField!
+    @IBOutlet weak var textViewuserMeta: UITextView!
+    var param: [String:Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
@@ -22,7 +24,9 @@ class LoginViewController: BaseViewController {
     func configUI(){
         self.hideKeyboardWhenTappedAround()
         textFeildUniqueID.text = "123"
-        textFeildUserMeta.text = "shivam@gmail.com"
+//        textFeildUserMeta.text = "shivam@gmail.com"
+        param = ["email": "shivam@gmail.com"]
+        jsonToString(json: param as AnyObject)
     }
     func moveToProfile(data: MzalloUserModel){
         DispatchQueue.main.async {
@@ -36,7 +40,7 @@ class LoginViewController: BaseViewController {
     }
     func LoginSdk(){
         
-        Mzaalo.sharedInstance.login(userId: textFeildUniqueID.text ?? "", userMeta: ["email":textFeildUserMeta.text ?? ""], onSuccess: { (user) in
+        Mzaalo.sharedInstance.login(userId: textFeildUniqueID.text ?? "", userMeta: ["email":"shivam@gmail.com"], onSuccess: { (user) in
             
             
             let data = fastEncode(model: user)
@@ -63,7 +67,17 @@ class LoginViewController: BaseViewController {
     @IBAction func buttonBackAction(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    
+    func jsonToString(json: AnyObject){
+           do {
+               let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
+               let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
+               self.textViewuserMeta.text = convertedString ?? ""
+               print(convertedString ?? "defaultvalue")
+           } catch let myJSONError {
+               print(myJSONError)
+           }
+
+       }
 
     /*
     // MARK: - Navigation
