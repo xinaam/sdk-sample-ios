@@ -41,6 +41,7 @@ class RewardViewController: BaseViewController {
         dropDown.width = textFeildRewardActions.frame.width
         
     }
+    //   API for Reward Registration in Mzaalo
     func registerReward(){
         var rewardAction: MzaaloRewardsAction!
         if textFeildRewardActions.text ?? "" == "SIGNED_UP"{
@@ -54,7 +55,7 @@ class RewardViewController: BaseViewController {
         }
         DispatchQueue.main.async {
             Mzaalo.sharedInstance.registerRewardAction(action: rewardAction , eventMeta: [:], onSuccess: {
-                print("success")
+                print("Reward Registered Successfully")
                 DispatchQueue.main.async {
                     self.view.hideLoader()
                     self.showToast(message: "Registered Successfully")
@@ -70,11 +71,12 @@ class RewardViewController: BaseViewController {
             }
         }
     }
+//   API for Get Balance form mzaalo
     func getBalance(){
         DispatchQueue.main.async {
             Mzaalo.sharedInstance.getBalance(onSuccess: { (balance:Int) in
                
-                print(balance)
+                print("balance \(balance)")
                 DispatchQueue.main.async {
                     self.labelBalance.text = "Balance : \(balance)"
                     self.view.hideLoader()

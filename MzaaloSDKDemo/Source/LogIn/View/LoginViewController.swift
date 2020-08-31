@@ -38,11 +38,13 @@ class LoginViewController: BaseViewController {
         }
         
     }
+    //MARK:- API for Method for Login user using SDK.
     func LoginSdk(){
         
         Mzaalo.sharedInstance.login(userId: textFeildUniqueID.text ?? "", userMeta: ["email":"shivam@gmail.com"], onSuccess: { (user) in
             
-            
+//            Encoding MazalloUser codedable Object
+            print("MzaaloUser \(user)")
             let data = fastEncode(model: user)
             let objData = MzalloUserModel.init(id: data["id"]as? String ?? "", firstName: data["firstName"]as? String ?? "", lastName: data["lastName"]as? String ?? "", email: data["email"]as? String ?? "", phone: data["phone"]as? String ?? "", gender: data["gender"]as? String ?? "", countryCode: data["countryCode"]as? String ?? "", dob: data["dob"]as? String ?? "")
            

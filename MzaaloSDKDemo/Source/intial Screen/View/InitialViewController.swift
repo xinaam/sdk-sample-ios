@@ -24,6 +24,9 @@ class InitialViewController: BaseViewController {
         configUi()
         // Do any additional setup after loading the view.
     }
+    //    MARK:- Functions
+        
+    //    Config UI
     func configUi(){
         self.hideKeyboardWhenTappedAround()
         textFeildEnvironMent.rightViewMode = .always
@@ -48,6 +51,8 @@ class InitialViewController: BaseViewController {
         }
         
     }
+    
+    //MARK:- API for Initilizing setup Envirimnemnt and SDK
     func initializeSdk(){
         var environMent: MzaaloEnvironment!
         if textFeildEnvironMent.text == "Staging"{
@@ -56,7 +61,7 @@ class InitialViewController: BaseViewController {
             environMent = MzaaloEnvironment.PRODUCTION
         }
         Mzaalo.sharedInstance.setupSDK(partnerCode: textFeildPostalCode.text ?? "", environment: environMent, onSuccess: {
-            print("success")
+            print("Mzallo SDK initialized succesfully")
             self.moveToLogin()
             DispatchQueue.main.async {
               self.view.hideLoader()
