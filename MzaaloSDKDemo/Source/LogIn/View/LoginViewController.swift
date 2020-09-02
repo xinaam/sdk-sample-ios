@@ -26,7 +26,7 @@ class LoginViewController: BaseViewController {
         textFeildUniqueID.text = "123"
 //        textFeildUserMeta.text = "shivam@gmail.com"
         param = ["email": "shiva@gmail.com"]
-        jsonToString(json: param as AnyObject)
+        textViewuserMeta.text = self.jsonToString(json: param as AnyObject)
     }
     func moveToProfile(data: MzalloUserModel){
         DispatchQueue.main.async {
@@ -40,10 +40,11 @@ class LoginViewController: BaseViewController {
     }
     //MARK:- API for Method for Login user using SDK.
     func LoginSdk(){
-        if jsonValidate() {
+        let userMetaJson = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
+        if self.jsonValidate(jsonString: userMetaJson) {
             self.view.showLoader()
             let userMetaJson = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
-            guard let userMeta: [String:String] = convertToDictionary(text: userMetaJson) else {return}
+            guard let userMeta: [String:String] = self.convertToDictionary(text: userMetaJson) else {return}
             print(userMeta)
         Mzaalo.sharedInstance.login(userId: textFeildUniqueID.text ?? "", userMeta: userMeta, onSuccess: { (user) in
             
@@ -77,42 +78,7 @@ class LoginViewController: BaseViewController {
     @IBAction func buttonBackAction(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    func jsonValidate()-> Bool {
-//        let userMetaJson = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
-        let jsonString = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
-        guard let jsonDataToVerify = jsonString.data(using: String.Encoding.utf8)else {return false}
-        
-            do {
-                _ = try JSONSerialization.jsonObject(with: jsonDataToVerify)
-                return true
-            } catch {
-                print("Error deserializing JSON: \(error.localizedDescription)")
-                return false
-            }
-        
-        
-    }
-    func jsonToString(json: AnyObject){
-           do {
-               let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
-               let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
-               self.textViewuserMeta.text = convertedString ?? ""
-               print(convertedString ?? "defaultvalue")
-           } catch let myJSONError {
-               print(myJSONError)
-           }
-
-       }
-    func convertToDictionary(text: String) -> [String: String]? {
-        if let data = text.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
-    }
+    
 
     /*
     // MARK: - Navigation

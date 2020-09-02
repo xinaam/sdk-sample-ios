@@ -14,12 +14,14 @@ import MzaaloRewardsSDK
 class RewardViewController: BaseViewController {
 
     @IBOutlet weak var labelBalance: UILabel!
+    @IBOutlet weak var textViewEvent: UITextView!
     @IBOutlet weak var buttonRegister: UIButton!
     @IBOutlet weak var buttonRewardsContent: UIButton!
     @IBOutlet weak var textFeildEvent: UITextField!
     @IBOutlet weak var textFeildRewardActions: UITextField!
     var data:[String] = ["CONTENT_VIEWED","CHECKED_IN","SIGNED_UP","REFERRAL_APPLIED"]
     var dropDown = DropDown()
+    let placeholderText = "Enter JSONObject of EventMeta"
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
@@ -27,6 +29,8 @@ class RewardViewController: BaseViewController {
     }
     func configUI(){
         self.hideKeyboardWhenTappedAround()
+        textFeildEvent.delegate = self
+        textViewEvent.text = placeholderText
         textFeildRewardActions.rightViewMode = .always
         let viewImage = UIImageView.init(image: UIImage.init(named: "down-arrow"))
         viewImage.tintColor = UIColor.label
@@ -43,32 +47,48 @@ class RewardViewController: BaseViewController {
     }
     //   API for Reward Registration in Mzaalo
     func registerReward(){
-        var rewardAction: MzaaloRewardsAction!
-        if textFeildRewardActions.text ?? "" == "SIGNED_UP"{
-            rewardAction = MzaaloRewardsAction.signedUp
-        }else if textFeildRewardActions.text ?? "" == "CHECKED_IN"{
-            rewardAction = MzaaloRewardsAction.checkedIn
-        }else if textFeildRewardActions.text ?? "" == "CONTENT_VIEWED"{
-            rewardAction = MzaaloRewardsAction.contentViewed
-        }else {
-            rewardAction = MzaaloRewardsAction.referralApplied
-        }
-        DispatchQueue.main.async {
-            Mzaalo.sharedInstance.registerRewardAction(action: rewardAction , eventMeta: [:], onSuccess: {
-                print("Reward Registered Successfully")
-                DispatchQueue.main.async {
-                    self.view.hideLoader()
-                    self.showToast(message: "Registered Successfully")
-                }
-                
-            }) { (err) in
-                print(err)
-                DispatchQueue.main.async {
-                    self.view.hideLoader()
-                    self.showToast(message: err.debugDescription)
-                }
-                
+        let jsonstring = textFeildEvent.text?.replacingOccurrences(of: "”", with: "\"", options: [.caseInsensitive, .regularExpression])//replacingOccurrences(of: "”", with: "\"")
+        
+        if self.jsonValidate(jsonString: jsonstring!) || textFeildEvent.text?.isEmpty ?? true {
+            self.view.showLoader()
+            var rewardAction: MzaaloRewardsAction!
+            if textFeildRewardActions.text ?? "" == "SIGNED_UP"{
+                rewardAction = MzaaloRewardsAction.signedUp
+            }else if textFeildRewardActions.text ?? "" == "CHECKED_IN"{
+                rewardAction = MzaaloRewardsAction.checkedIn
+            }else if textFeildRewardActions.text ?? "" == "CONTENT_VIEWED"{
+                rewardAction = MzaaloRewardsAction.contentViewed
+            }else {
+                rewardAction = MzaaloRewardsAction.referralApplied
             }
+            DispatchQueue.main.async {
+                let eventMetaJson = self.textFeildEvent.text?.replacingOccurrences(of: "”", with: "\"")
+                var eventMeta: [String:String] = [:]
+                if self.textFeildEvent.text?.isEmpty ?? true {
+                    eventMeta = [:]
+                    
+                }else {
+                    eventMeta = self.convertToDictionary(text: eventMetaJson!)!
+                }
+                print(eventMeta)
+                Mzaalo.sharedInstance.registerRewardAction(action: rewardAction , eventMeta: eventMeta, onSuccess: {
+                    print("Reward Registered Successfully")
+                    DispatchQueue.main.async {
+                        self.view.hideLoader()
+                        self.showToast(message: "Registered Successfully")
+                    }
+                    
+                }) { (err) in
+                    print(err)
+                    DispatchQueue.main.async {
+                        self.view.hideLoader()
+                        self.showToast(message: err.debugDescription)
+                    }
+                    
+                }
+            }
+        }else {
+            showToast(message: "Provide valid JSONObject")
         }
     }
 //   API for Get Balance form mzaalo
@@ -100,7 +120,7 @@ class RewardViewController: BaseViewController {
     @IBAction func buttonregisterAction(_ sender: UIButton) {
         
         DispatchQueue.main.async {
-            self.view.showLoader()
+            
             self.registerReward()
         }
         
@@ -125,4 +145,20 @@ class RewardViewController: BaseViewController {
     }
     */
 
+}
+extension RewardViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let tempStr = textField.text!
+        let str = "\\"
+        let tempJsonstring = tempStr.replacingOccurrences(of: "”", with: "\"", options: [.caseInsensitive, .regularExpression])//replacingOccurrences(of: "”", with: "\"")
+        let tempJson = tempJsonstring.replace(string: "”", replacement: "\"")
+        let jsonstring = tempJson.replacingOccurrences(of: str, with: "")
+        textField.text! = jsonstring
+        return true
+    }
+    
+    
+
+    
+    
 }

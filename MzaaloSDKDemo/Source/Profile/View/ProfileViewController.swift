@@ -28,7 +28,6 @@ class ProfileViewController: UIViewController {
     
 //    MARK:- Functions
     func configUi(){
-        print("user * \(user)")
         labelEmail.text = user?.email ?? ""
         labelDOB.text = user?.dob ?? ""
         labelPhone.text = user?.phone ?? ""

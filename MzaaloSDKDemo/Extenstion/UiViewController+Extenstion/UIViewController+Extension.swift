@@ -56,5 +56,44 @@ extension UIViewController {
         
         return self
     }
+    
+    func jsonValidate(jsonString:String)-> Bool {
+    //        let userMetaJson = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
+            
+            guard let jsonDataToVerify = jsonString.data(using: String.Encoding.utf8)else {return false}
+            
+                do {
+                    _ = try JSONSerialization.jsonObject(with: jsonDataToVerify)
+                    return true
+                } catch {
+                    print("Error deserializing JSON: \(error.localizedDescription)")
+                    return false
+                }
+            
+            
+        }
+        func jsonToString(json: AnyObject)-> String?{
+               do {
+                   let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
+                   let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
+                   
+                   print(convertedString ?? "defaultvalue")
+                return convertedString
+               } catch let myJSONError {
+                   print(myJSONError)
+                return nil
+               }
+
+           }
+        func convertToDictionary(text: String) -> [String: String]? {
+            if let data = text.data(using: .utf8) {
+                do {
+                    return try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            return nil
+        }
 }
 
