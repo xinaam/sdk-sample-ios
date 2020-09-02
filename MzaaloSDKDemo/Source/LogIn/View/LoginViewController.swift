@@ -25,7 +25,7 @@ class LoginViewController: BaseViewController {
         self.hideKeyboardWhenTappedAround()
         textFeildUniqueID.text = "123"
 //        textFeildUserMeta.text = "shivam@gmail.com"
-        param = ["email": "shivam@gmail.com"]
+        param = ["email": "shiva@gmail.com"]
         jsonToString(json: param as AnyObject)
     }
     func moveToProfile(data: MzalloUserModel){
@@ -40,13 +40,17 @@ class LoginViewController: BaseViewController {
     }
     //MARK:- API for Method for Login user using SDK.
     func LoginSdk(){
-        
-        Mzaalo.sharedInstance.login(userId: textFeildUniqueID.text ?? "", userMeta: ["email":"shivam@gmail.com"], onSuccess: { (user) in
+        if jsonValidate() {
+            self.view.showLoader()
+            let userMetaJson = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
+            guard let userMeta: [String:String] = convertToDictionary(text: userMetaJson) else {return}
+            print(userMeta)
+        Mzaalo.sharedInstance.login(userId: textFeildUniqueID.text ?? "", userMeta: userMeta, onSuccess: { (user) in
             
 //            Encoding MazalloUser codedable Object
             print("MzaaloUser \(user)")
             let data = fastEncode(model: user)
-            let objData = MzalloUserModel.init(id: data["id"]as? String ?? "", firstName: data["firstName"]as? String ?? "", lastName: data["lastName"]as? String ?? "", email: data["email"]as? String ?? "", phone: data["phone"]as? String ?? "", gender: data["gender"]as? String ?? "", countryCode: data["countryCode"]as? String ?? "", dob: data["dob"]as? String ?? "")
+            let objData = MzalloUserModel.init(id: data["id"]as? String ?? "", firstName: data["firstName"]as? String ?? "", lastName: data["lastName"]as? String ?? "", email: data["email"]as? String ?? "", phone: data["phone"]as? String ?? "", gender: data["gender"]as? String ?? "", countryCode: data["country_code"]as? String ?? "", dob: data["dob"]as? String ?? "")
            
             
             self.moveToProfile(data: objData)
@@ -56,18 +60,37 @@ class LoginViewController: BaseViewController {
         }) { (err) in
             print(err)
             DispatchQueue.main.async {
+            self.view.hideLoader()
             self.showToast(message: err.debugDescription)
             }
+        }
+        }else {
+            showToast(message: "Provide valid JSONObject")
         }
     }
    
 //    MARK:- Actions
     @IBAction func buttonLoginAction(_ sender: UIButton) {
-        self.view.showLoader()
+        
         LoginSdk()
     }
     @IBAction func buttonBackAction(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    func jsonValidate()-> Bool {
+//        let userMetaJson = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
+        let jsonString = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
+        guard let jsonDataToVerify = jsonString.data(using: String.Encoding.utf8)else {return false}
+        
+            do {
+                _ = try JSONSerialization.jsonObject(with: jsonDataToVerify)
+                return true
+            } catch {
+                print("Error deserializing JSON: \(error.localizedDescription)")
+                return false
+            }
+        
+        
     }
     func jsonToString(json: AnyObject){
            do {
@@ -80,6 +103,16 @@ class LoginViewController: BaseViewController {
            }
 
        }
+    func convertToDictionary(text: String) -> [String: String]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
 
     /*
     // MARK: - Navigation
@@ -91,4 +124,12 @@ class LoginViewController: BaseViewController {
     }
     */
 
+}
+extension LoginViewController: UITextViewDelegate {
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        var string = text
+//        if text == "”"{
+//            string = text.replace(string: "”", replacement: "\"")
+//        }
+//    }
 }

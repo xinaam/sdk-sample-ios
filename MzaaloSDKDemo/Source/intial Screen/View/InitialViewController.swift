@@ -54,6 +54,7 @@ class InitialViewController: BaseViewController {
     
     //MARK:- API for Initilizing setup Envirimnemnt and SDK
     func initializeSdk(){
+        textFeildPostalCode.resignFirstResponder()
         var environMent: MzaaloEnvironment!
         if textFeildEnvironMent.text == "Staging"{
             environMent = MzaaloEnvironment.STAGING
