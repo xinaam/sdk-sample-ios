@@ -41,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		55BDA81FBBC25C89288B91D1 /* Pods_MzaaloSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MzaaloSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		845FCA4224BD8B1D00132CAF /* MzaaloSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MzaaloSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		845FCA4224BD8B1D00132CAF /* Mzaalo SDK Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mzaalo SDK Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		845FCA4524BD8B1D00132CAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		845FCA4724BD8B1D00132CAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		845FCA4924BD8B1D00132CAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		845FCA4324BD8B1D00132CAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				845FCA4224BD8B1D00132CAF /* MzaaloSDKDemo.app */,
+				845FCA4224BD8B1D00132CAF /* Mzaalo SDK Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 			);
 			name = MzaaloSDKDemo;
 			productName = MzaaloSDKDemo;
-			productReference = 845FCA4224BD8B1D00132CAF /* MzaaloSDKDemo.app */;
+			productReference = 845FCA4224BD8B1D00132CAF /* Mzaalo SDK Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -694,9 +694,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mzaalo.sdk;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mzaalo SDK Demo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -714,9 +714,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mzaalo.sdk;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Mzaalo SDK Demo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
