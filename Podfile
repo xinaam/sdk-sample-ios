@@ -7,6 +7,5 @@ target 'MzaaloSDKDemo' do
 
   # Pods for MzaaloSDKDemo
    pod 'DropDown'
-   pod 'MzaaloAuth'
    pod 'MzaaloRewards'
 end

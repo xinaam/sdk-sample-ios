@@ -1,0 +1,11 @@
+framework module MzaaloSDK {
+  umbrella header "MzaaloSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module MzaaloSDK.Swift {
+    header "MzaaloSDK-Swift.h"
+    requires objc
+}

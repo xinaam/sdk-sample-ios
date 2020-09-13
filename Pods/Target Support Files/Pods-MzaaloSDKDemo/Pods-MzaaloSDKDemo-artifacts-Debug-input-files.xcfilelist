@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-MzaaloSDKDemo/Pods-MzaaloSDKDemo-artifacts.sh
+${PODS_ROOT}/MzaaloAuth/MzaaloSDK.xcframework
+${PODS_ROOT}/MzaaloRewards/MzaaloRewardsSDK.xcframework

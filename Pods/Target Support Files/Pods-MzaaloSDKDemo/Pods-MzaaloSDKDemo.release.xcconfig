@@ -1,5 +1,5 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DropDown" "${PODS_ROOT}/MzaaloAuth" "${PODS_ROOT}/MzaaloRewards"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DropDown" "${PODS_ROOT}/MzaaloAuth" "${PODS_ROOT}/MzaaloAuth/MzaaloSDK.xcframework/ios-armv7_arm64" "${PODS_ROOT}/MzaaloAuth/MzaaloSDK.xcframework/ios-x86_64_i386-simulator" "${PODS_ROOT}/MzaaloRewards" "${PODS_ROOT}/MzaaloRewards/MzaaloRewardsSDK.xcframework/ios-armv7_arm64" "${PODS_ROOT}/MzaaloRewards/MzaaloRewardsSDK.xcframework/ios-i386_x86_64-simulator"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DropDown/DropDown.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
