@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "845FCA4124BD8B1D00132CAF"
-               BuildableName = "MzaaloSDKDemo.app"
+               BuildableName = "Mzaalo SDK Demo.app"
                BlueprintName = "MzaaloSDKDemo"
                ReferencedContainer = "container:MzaaloSDKDemo.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "845FCA4124BD8B1D00132CAF"
-            BuildableName = "MzaaloSDKDemo.app"
+            BuildableName = "Mzaalo SDK Demo.app"
             BlueprintName = "MzaaloSDKDemo"
             ReferencedContainer = "container:MzaaloSDKDemo.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "845FCA4124BD8B1D00132CAF"
-            BuildableName = "MzaaloSDKDemo.app"
+            BuildableName = "Mzaalo SDK Demo.app"
             BlueprintName = "MzaaloSDKDemo"
             ReferencedContainer = "container:MzaaloSDKDemo.xcodeproj">
          </BuildableReference>
