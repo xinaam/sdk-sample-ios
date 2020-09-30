@@ -24,8 +24,7 @@ class LoginViewController: BaseViewController {
     func configUI(){
         self.hideKeyboardWhenTappedAround()
         textFeildUniqueID.text = "123"
-//        textFeildUserMeta.text = "shivam@gmail.com"
-        param = ["email": "shiva@gmail.com"]
+        param = ["email": "user@example.com"]
         textViewuserMeta.text = self.jsonToString(json: param as AnyObject)
     }
     func moveToProfile(data: MzalloUserModel){
