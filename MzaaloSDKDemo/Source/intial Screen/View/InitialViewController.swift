@@ -16,14 +16,16 @@ class InitialViewController: BaseViewController {
     @IBOutlet weak var buttonEnvironMent: UIButton!
     @IBOutlet weak var textFeildEnvironMent: UITextField!
     @IBOutlet weak var textFeildPostalCode: UITextField!
-    var arrowArray = ["Staging","Production"]
+    var arrowArray = ["STAGING","PRODUCTION"]
     let dropDown = DropDown()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configUi()
         // Do any additional setup after loading the view.
     }
+    
     //    MARK:- Functions
         
     //    Config UI
@@ -40,9 +42,10 @@ class InitialViewController: BaseViewController {
             self.textFeildEnvironMent.text = item
         }
         dropDown.width = textFeildEnvironMent.frame.width - 10
-        textFeildEnvironMent.text = "Staging"
+        textFeildEnvironMent.text = "STAGING"
         textFeildPostalCode.text = "eros"
     }
+    
     func moveToLogin(){
         DispatchQueue.main.sync {
             if let ctrl = storyboard?.instantiateViewController(identifier: "LoginViewController")as? LoginViewController {
@@ -56,7 +59,7 @@ class InitialViewController: BaseViewController {
     func initializeSdk(){
         textFeildPostalCode.resignFirstResponder()
         var environMent: MzaaloEnvironment!
-        if textFeildEnvironMent.text == "Staging"{
+        if textFeildEnvironMent.text == "STAGING"{
             environMent = MzaaloEnvironment.STAGING
         }else{
             environMent = MzaaloEnvironment.PRODUCTION
@@ -77,9 +80,11 @@ class InitialViewController: BaseViewController {
         }
 
     }
+    
     @IBAction func buttonEnvironMentAction(_ sender: UIButton) {
         dropDown.show()
     }
+    
     @IBAction func buttonInitializeaction(_ sender: UIButton) {
         self.view.showLoader()
         DispatchQueue.main.async {
@@ -87,15 +92,5 @@ class InitialViewController: BaseViewController {
         }
       
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
