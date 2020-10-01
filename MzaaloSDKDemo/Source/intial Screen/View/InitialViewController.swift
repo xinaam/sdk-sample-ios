@@ -14,20 +14,23 @@ class InitialViewController: BaseViewController {
 
     @IBOutlet weak var buttonInitialize: UIButton!
     @IBOutlet weak var buttonEnvironMent: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var textFeildEnvironMent: UITextField!
     @IBOutlet weak var textFeildPostalCode: UITextField!
+    
     var arrowArray = ["STAGING","PRODUCTION"]
+    var menus = ["LoggedInUser"]
     let dropDown = DropDown()
+    let menuDropDown = DropDown()
+    var environMent: MzaaloEnvironment = .STAGING
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configUi()
-        // Do any additional setup after loading the view.
     }
     
     //    MARK:- Functions
-        
     //    Config UI
     func configUi(){
         self.hideKeyboardWhenTappedAround()
@@ -44,21 +47,37 @@ class InitialViewController: BaseViewController {
         dropDown.width = textFeildEnvironMent.frame.width - 10
         textFeildEnvironMent.text = "STAGING"
         textFeildPostalCode.text = "eros"
+        
+        menuDropDown.anchorView = menuButton
+        menuDropDown.dataSource = menus
+        menuDropDown.width = 200
+        menuButton.addTarget(self, action: #selector(show(sender:)), for: .touchUpInside)
+        menuDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            showLoggedInUser()
+        }
+    }
+    
+    @objc
+    func show(sender:UIButton){
+        menuDropDown.show()
+    }
+    
+    func showLoggedInUser(){
+        loginSDK()
     }
     
     func moveToLogin(){
         DispatchQueue.main.sync {
-            if let ctrl = storyboard?.instantiateViewController(identifier: "LoginViewController")as? LoginViewController {
+            if let ctrl = storyboard?.instantiateViewController(identifier: "LoginViewController")
+                as? LoginViewController {
                 navigationController?.pushViewController(ctrl, animated: true)
             }
         }
-        
     }
     
     //MARK:- API for Initilizing setup Envirimnemnt and SDK
     func initializeSdk(){
         textFeildPostalCode.resignFirstResponder()
-        var environMent: MzaaloEnvironment!
         if textFeildEnvironMent.text == "STAGING"{
             environMent = MzaaloEnvironment.STAGING
         }else{
@@ -90,7 +109,29 @@ class InitialViewController: BaseViewController {
         DispatchQueue.main.async {
             self.initializeSdk()
         }
-      
     }
+}
 
+//API integration
+extension InitialViewController{
+    func loginSDK(){
+        let param = ["email": "user@example.com"]
+        Mzaalo.sharedInstance.login(userId: "123", userMeta: param, onSuccess: { (user) in
+            DispatchQueue.main.async {
+              self.view.hideLoader()
+            }
+//            Encoding MazalloUser codedable Object
+            let data = fastEncode(model: user)
+            let objData = MzalloUserModel.init(id: data["id"]as? String ?? "", firstName: data["firstName"]as? String ?? "", lastName: data["lastName"]as? String ?? "", email: data["email"]as? String ?? "", phone: data["phone"]as? String ?? "", gender: data["gender"]as? String ?? "", countryCode: data["country_code"]as? String ?? "", dob: data["dob"]as? String ?? "")
+                DispatchQueue.main.async {
+                    self.showToast(message: objData.toJSONString())
+                }
+        }) { (err) in
+            print(err)
+            DispatchQueue.main.async {
+            self.view.hideLoader()
+            self.showToast(message: err.debugDescription)
+            }
+        }
+    }
 }

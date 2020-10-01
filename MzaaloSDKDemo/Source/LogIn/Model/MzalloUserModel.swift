@@ -17,5 +17,17 @@ struct MzalloUserModel: Codable {
     var gender: String?
     var countryCode: String?
     var dob: String?
+    
+    func toJSONString()->String{
+        do{
+            let user = MzalloUserModel(id: id, firstName: firstName, lastName: lastName, email: email, phone: phone, gender: gender, countryCode: countryCode, dob: dob)
+            let jsonData = try JSONEncoder().encode(user)
+                let jsonString = String(data: jsonData, encoding: .utf8)!
+                return jsonString
+        }catch let error{
+            print("exception\(error)")
+        }
+        return ""
+    }
 }
 

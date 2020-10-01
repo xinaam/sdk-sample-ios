@@ -19,14 +19,21 @@ class RewardViewController: BaseViewController {
     @IBOutlet weak var buttonRewardsContent: UIButton!
     @IBOutlet weak var textFeildEvent: UITextField!
     @IBOutlet weak var textFeildRewardActions: UITextField!
+    @IBOutlet weak var menuButton: UIButton!
+    
     var data:[String] = ["CONTENT_VIEWED","CHECKED_IN","SIGNED_UP","REFERRAL_APPLIED"]
     var dropDown = DropDown()
     let placeholderText = "Enter JSONObject of EventMeta"
+    var menus = ["LoggedInUser"]
+    let menuDropDown = DropDown()
+    var user: MzalloUserModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
         // Do any additional setup after loading the view.
     }
+    
     func configUI(){
         self.hideKeyboardWhenTappedAround()
         textFeildEvent.delegate = self
@@ -44,7 +51,24 @@ class RewardViewController: BaseViewController {
         self.textFeildRewardActions.text = "SIGNED_UP"
         dropDown.width = textFeildRewardActions.frame.width
         
+        menuDropDown.anchorView = menuButton
+        menuDropDown.dataSource = menus
+        menuDropDown.width = 200
+        menuButton.addTarget(self, action: #selector(show(sender:)), for: .touchUpInside)
+        menuDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            showLoggedInUser()
+        }
     }
+    
+    @objc
+    func show(sender:UIButton){
+        menuDropDown.show()
+    }
+    
+    func showLoggedInUser(){
+        showToast(message: user?.toJSONString() ?? "")
+    }
+    
     //   API for Reward Registration in Mzaalo
     func registerReward(){
         let jsonstring = textFeildEvent.text?.replacingOccurrences(of: "”", with: "\"", options: [.caseInsensitive, .regularExpression])//replacingOccurrences(of: "”", with: "\"")
@@ -91,6 +115,7 @@ class RewardViewController: BaseViewController {
             showToast(message: "Provide valid JSONObject")
         }
     }
+    
 //   API for Get Balance form mzaalo
     func getBalance(){
         DispatchQueue.main.async {
@@ -111,41 +136,30 @@ class RewardViewController: BaseViewController {
                 
             })
         }
-        
     }
+    
     @IBAction func buttonRewardAction(_ sender: UIButton) {
         dropDown.show()
     }
     
     @IBAction func buttonregisterAction(_ sender: UIButton) {
-        
         DispatchQueue.main.async {
-            
             self.registerReward()
         }
-        
     }
     
     @IBAction func buttonFetchReward(_ sender: UIButton) {
         DispatchQueue.main.async {
-        self.view.showLoader()
+            self.view.showLoader()
             self.getBalance()
         }
     }
+    
     @IBAction func buttonBackAction(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
 extension RewardViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let tempStr = textField.text!
@@ -156,9 +170,4 @@ extension RewardViewController: UITextFieldDelegate {
         textField.text! = jsonstring
         return true
     }
-    
-    
-
-    
-    
 }

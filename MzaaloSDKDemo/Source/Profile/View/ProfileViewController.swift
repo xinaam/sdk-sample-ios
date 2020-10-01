@@ -8,8 +8,9 @@
 
 import UIKit
 import MzaaloSDK
+import DropDown
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
 
     @IBOutlet weak var textViewAccessToken: UITextView!
     @IBOutlet weak var labelDOB: UILabel!
@@ -19,7 +20,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelLastName: UILabel!
     @IBOutlet weak var labelFirstName: UILabel!
+    @IBOutlet weak var menuButton: UIButton!
+    
     var user: MzalloUserModel?
+    var menus = ["LoggedInUser", "Logout"]
+    let menuDropDown = DropDown()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUi()
@@ -36,7 +42,32 @@ class ProfileViewController: UIViewController {
         labelCountryCode.text = user?.countryCode ?? ""
         labelFirstName.text = user?.firstName ?? ""
         textViewAccessToken.text = user?.id ?? ""
+        
+        menuDropDown.anchorView = menuButton
+        menuDropDown.dataSource = menus
+        menuDropDown.width = 200
+        menuButton.addTarget(self, action: #selector(show(sender:)), for: .touchUpInside)
+        menuDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            if index == 0{
+                showLoggedInUser()
+            }else{
+                DispatchQueue.main.async {
+                    Mzaalo.sharedInstance.logOut()
+                    self.moveToInitial()
+                }
+            }
+        }
     }
+    
+    @objc
+    func show(sender:UIButton){
+        menuDropDown.show()
+    }
+    
+    func showLoggedInUser(){
+        showToast(message: user?.toJSONString() ?? "")
+    }
+    
     func moveToPlayerScreen(){
         if let ctrl = storyboard?.instantiateViewController(identifier: "VideoPlayerViewController")as? VideoPlayerViewController{
             ctrl.userId = user?.id ?? ""
@@ -51,16 +82,20 @@ class ProfileViewController: UIViewController {
         }
         
     }
+    
     func moveToInitial(){
         if let ctrl = storyboard?.instantiateViewController(identifier: "InitialViewController")as? InitialViewController{
                    navigationController?.pushViewController(ctrl, animated: true)
                }
     }
+    
     func moveToRewardScreen(){
        if let ctrl = storyboard?.instantiateViewController(identifier: "RewardViewController")as? RewardViewController{
+        ctrl.user = user
             navigationController?.pushViewController(ctrl, animated: true)
         }
     }
+    
 //    MARK:- Actions
     @IBAction func buttonBackAction(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -73,5 +108,4 @@ class ProfileViewController: UIViewController {
         moveToRewardScreen()
     }
     
-
 }

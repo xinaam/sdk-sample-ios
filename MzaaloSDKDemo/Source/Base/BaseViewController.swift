@@ -15,6 +15,7 @@ class BaseViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
+    
     //MARK: - Function to show toast
      func showToast(message: String) {
          
@@ -30,13 +31,13 @@ class BaseViewController: UIViewController {
          
          let toastContainer = UIView(frame: CGRect())
          toastContainer.tag = 1000
-         toastContainer.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.6)
+        toastContainer.backgroundColor = .black
          toastContainer.alpha = 0.0
          toastContainer.layer.cornerRadius = 10
          toastContainer.clipsToBounds  =  true
          
          let toastLabel = UILabel(frame: CGRect())
-         toastLabel.textColor = UIColor.label
+        toastLabel.textColor = .white
          toastLabel.textAlignment = .center;
         toastLabel.font = UIFont.systemFont(ofSize: 15)
          toastLabel.text = message
@@ -65,7 +66,7 @@ class BaseViewController: UIViewController {
          UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
              toastContainer.alpha = 1.0
          }, completion: { _ in
-             UIView.animate(withDuration: 0.5, delay: 2.0, options: .curveEaseOut, animations: {
+             UIView.animate(withDuration: 0.5, delay: 3.0, options: .curveEaseOut, animations: {
                  toastContainer.alpha = 0.0
              }, completion: {_ in
                  toastContainer.removeFromSuperview()
