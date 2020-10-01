@@ -65,8 +65,11 @@ class ProfileViewController: BaseViewController {
     }
     
     func showLoggedInUser(){
-        let user = getLoggedInUser()
-        showToast(message: user.toJSONString())
+        if let user = getLoggedInUser(){
+            showToast(message: user.toJSONString())
+        }else{
+            showToast(message: "null")
+        }
     }
     
     func moveToPlayerScreen(){

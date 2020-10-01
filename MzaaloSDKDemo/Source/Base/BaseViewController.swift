@@ -75,9 +75,12 @@ class BaseViewController: UIViewController {
          })
      }
     
-    func getLoggedInUser()->MzaaloUserModel{
+    func getLoggedInUser()->MzaaloUserModel?{
         let user = Mzaalo.sharedInstance.loggedInUser()
         let data = fastEncode(model: user)
+        guard data.count != 0 else {
+            return nil
+        }
         let userModel = MzaaloUserModel.init(id: data["id"]as? String ?? "", firstName: data["firstName"]as? String ?? "", lastName: data["lastName"]as? String ?? "", email: data["email"]as? String ?? "", phone: data["phone"]as? String ?? "", gender: data["gender"]as? String ?? "", countryCode: data["country_code"]as? String ?? "", dob: data["dob"]as? String ?? "")
        return userModel
     }

@@ -65,8 +65,11 @@ class RewardViewController: BaseViewController {
     }
     
     func showLoggedInUser(){
-        let user = getLoggedInUser()
-        showToast(message: user.toJSONString())
+        if let user = getLoggedInUser(){
+            showToast(message: user.toJSONString())
+        }else{
+            showToast(message: "null")
+        }
     }
     
     //   API for Reward Registration in Mzaalo

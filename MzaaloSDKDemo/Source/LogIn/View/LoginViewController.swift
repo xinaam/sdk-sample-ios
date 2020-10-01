@@ -52,8 +52,11 @@ class LoginViewController: BaseViewController {
     }
     
     func showLoggedInUser(){
-        let user = getLoggedInUser()
-        showToast(message: user.toJSONString())
+        if let user = getLoggedInUser(){
+            showToast(message: user.toJSONString())
+        }else{
+            showToast(message: "null")
+        }
     }
     
     func moveToProfile(data: MzaaloUserModel){
@@ -79,8 +82,9 @@ class LoginViewController: BaseViewController {
             }
 //            Encoding MazalloUser codedable Object
             print("MzaaloUser \(user)")
-            let loggedInUser = self.getLoggedInUser()
-            self.moveToProfile(data: loggedInUser)
+            if let loggedInUser = self.getLoggedInUser(){
+                self.moveToProfile(data: loggedInUser)
+            }
         }) { (err) in
             print(err)
             DispatchQueue.main.async {
