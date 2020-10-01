@@ -16,7 +16,7 @@
 		845FCA5224BD8B2200132CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845FCA5024BD8B2200132CAF /* LaunchScreen.storyboard */; };
 		8484D4ED24EBD8CD00E99839 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484D4EC24EBD8CD00E99839 /* LoaderView.swift */; };
 		8484D4EF24EBE6DF00E99839 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484D4EE24EBE6DF00E99839 /* BaseViewController.swift */; };
-		8484D4F224EBF57500E99839 /* MzalloUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484D4F124EBF57500E99839 /* MzalloUserModel.swift */; };
+		8484D4F224EBF57500E99839 /* MzaaloUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484D4F124EBF57500E99839 /* MzaaloUserModel.swift */; };
 		8484D4F424EBF80A00E99839 /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484D4F324EBF80A00E99839 /* JsonDecoder.swift */; };
 		84ED219D24EA5DEC001D4F15 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED219C24EA5DEC001D4F15 /* InitialViewController.swift */; };
 		84ED21A024EA60A1001D4F15 /* InitialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED219F24EA60A1001D4F15 /* InitialModel.swift */; };
@@ -51,7 +51,7 @@
 		845FCA5324BD8B2200132CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8484D4EC24EBD8CD00E99839 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		8484D4EE24EBE6DF00E99839 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		8484D4F124EBF57500E99839 /* MzalloUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MzalloUserModel.swift; sourceTree = "<group>"; };
+		8484D4F124EBF57500E99839 /* MzaaloUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MzaaloUserModel.swift; sourceTree = "<group>"; };
 		8484D4F324EBF80A00E99839 /* JsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecoder.swift; sourceTree = "<group>"; };
 		84ED219C24EA5DEC001D4F15 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		84ED219F24EA60A1001D4F15 /* InitialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialModel.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		8484D4F024EBF55A00E99839 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8484D4F124EBF57500E99839 /* MzalloUserModel.swift */,
+				8484D4F124EBF57500E99839 /* MzaaloUserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -520,7 +520,7 @@
 				84ED21B524EA99AF001D4F15 /* UILabel+Extension.swift in Sources */,
 				84ED21D924EB046D001D4F15 /* Constants.swift in Sources */,
 				8484D4ED24EBD8CD00E99839 /* LoaderView.swift in Sources */,
-				8484D4F224EBF57500E99839 /* MzalloUserModel.swift in Sources */,
+				8484D4F224EBF57500E99839 /* MzaaloUserModel.swift in Sources */,
 				84ED21C424EA9AF9001D4F15 /* PaddingTextFeild.swift in Sources */,
 				84ED21D124EAF459001D4F15 /* VideoPlayerViewController.swift in Sources */,
 				8484D4EF24EBE6DF00E99839 /* BaseViewController.swift in Sources */,

@@ -26,7 +26,6 @@ class RewardViewController: BaseViewController {
     let placeholderText = "Enter JSONObject of EventMeta"
     var menus = ["LoggedInUser"]
     let menuDropDown = DropDown()
-    var user: MzalloUserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +65,8 @@ class RewardViewController: BaseViewController {
     }
     
     func showLoggedInUser(){
-        showToast(message: user?.toJSONString() ?? "")
+        let user = getLoggedInUser()
+        showToast(message: user.toJSONString())
     }
     
     //   API for Reward Registration in Mzaalo

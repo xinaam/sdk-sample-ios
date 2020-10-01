@@ -1,5 +1,5 @@
 //
-//  MzalloUserModel.swift
+//  MzaaloUserModel.swift
 //  MzaaloSDKDemo
 //
 //  Created by Admin on 18/08/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MzalloUserModel: Codable {
+struct MzaaloUserModel: Codable {
     var id: String?
     var firstName: String?
     var lastName: String?
@@ -20,7 +20,7 @@ struct MzalloUserModel: Codable {
     
     func toJSONString()->String{
         do{
-            let user = MzalloUserModel(id: id, firstName: firstName, lastName: lastName, email: email, phone: phone, gender: gender, countryCode: countryCode, dob: dob)
+            let user = MzaaloUserModel(id: id, firstName: firstName, lastName: lastName, email: email, phone: phone, gender: gender, countryCode: countryCode, dob: dob)
             let jsonData = try JSONEncoder().encode(user)
                 let jsonString = String(data: jsonData, encoding: .utf8)!
                 return jsonString

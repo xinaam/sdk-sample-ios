@@ -52,10 +52,11 @@ class LoginViewController: BaseViewController {
     }
     
     func showLoggedInUser(){
-        LoginSdk(isShowProfileScreen: false)
+        let user = getLoggedInUser()
+        showToast(message: user.toJSONString())
     }
     
-    func moveToProfile(data: MzalloUserModel){
+    func moveToProfile(data: MzaaloUserModel){
         DispatchQueue.main.async {
             if let ctrl = self.storyboard?.instantiateViewController(identifier: "ProfileViewController")as? ProfileViewController{
                 ctrl.user = data
@@ -65,7 +66,7 @@ class LoginViewController: BaseViewController {
     }
     
     //MARK:- API for Method for Login user using SDK.
-    func LoginSdk(isShowProfileScreen:Bool){
+    func loginSDK(){
         let userMetaJson = textViewuserMeta.text.replacingOccurrences(of: "”", with: "\"")
         if self.jsonValidate(jsonString: userMetaJson) {
             self.view.showLoader()
@@ -78,16 +79,8 @@ class LoginViewController: BaseViewController {
             }
 //            Encoding MazalloUser codedable Object
             print("MzaaloUser \(user)")
-            let data = fastEncode(model: user)
-            let objData = MzalloUserModel.init(id: data["id"]as? String ?? "", firstName: data["firstName"]as? String ?? "", lastName: data["lastName"]as? String ?? "", email: data["email"]as? String ?? "", phone: data["phone"]as? String ?? "", gender: data["gender"]as? String ?? "", countryCode: data["country_code"]as? String ?? "", dob: data["dob"]as? String ?? "")
-           
-            if isShowProfileScreen{
-                self.moveToProfile(data: objData)
-            }else{
-                DispatchQueue.main.async {
-                    self.showToast(message: objData.toJSONString())
-                }
-            }
+            let loggedInUser = self.getLoggedInUser()
+            self.moveToProfile(data: loggedInUser)
         }) { (err) in
             print(err)
             DispatchQueue.main.async {
@@ -102,7 +95,7 @@ class LoginViewController: BaseViewController {
    
 //    MARK:- Actions
     @IBAction func buttonLoginAction(_ sender: UIButton) {
-        LoginSdk(isShowProfileScreen: true)
+        loginSDK()
     }
     
     @IBAction func buttonBackAction(_ sender: UIButton) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MzaaloSDK
 
 class BaseViewController: UIViewController {
 
@@ -73,15 +74,11 @@ class BaseViewController: UIViewController {
              })
          })
      }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func getLoggedInUser()->MzaaloUserModel{
+        let user = Mzaalo.sharedInstance.loggedInUser()
+        let data = fastEncode(model: user)
+        let userModel = MzaaloUserModel.init(id: data["id"]as? String ?? "", firstName: data["firstName"]as? String ?? "", lastName: data["lastName"]as? String ?? "", email: data["email"]as? String ?? "", phone: data["phone"]as? String ?? "", gender: data["gender"]as? String ?? "", countryCode: data["country_code"]as? String ?? "", dob: data["dob"]as? String ?? "")
+       return userModel
     }
-    */
-
 }

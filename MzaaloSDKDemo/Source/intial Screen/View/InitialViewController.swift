@@ -63,7 +63,8 @@ class InitialViewController: BaseViewController {
     }
     
     func showLoggedInUser(){
-        loginSDK()
+        let user = getLoggedInUser()
+        showToast(message: user.toJSONString())
     }
     
     func moveToLogin(){
@@ -84,7 +85,7 @@ class InitialViewController: BaseViewController {
             environMent = MzaaloEnvironment.PRODUCTION
         }
         Mzaalo.sharedInstance.setupSDK(partnerCode: textFeildPostalCode.text ?? "", environment: environMent, onSuccess: {
-            print("Mzallo SDK initialized succesfully")
+            print("Mzaalo SDK initialized succesfully")
             self.moveToLogin()
             DispatchQueue.main.async {
               self.view.hideLoader()
@@ -108,30 +109,6 @@ class InitialViewController: BaseViewController {
         self.view.showLoader()
         DispatchQueue.main.async {
             self.initializeSdk()
-        }
-    }
-}
-
-//API integration
-extension InitialViewController{
-    func loginSDK(){
-        let param = ["email": "user@example.com"]
-        Mzaalo.sharedInstance.login(userId: "123", userMeta: param, onSuccess: { (user) in
-            DispatchQueue.main.async {
-              self.view.hideLoader()
-            }
-//            Encoding MazalloUser codedable Object
-            let data = fastEncode(model: user)
-            let objData = MzalloUserModel.init(id: data["id"]as? String ?? "", firstName: data["firstName"]as? String ?? "", lastName: data["lastName"]as? String ?? "", email: data["email"]as? String ?? "", phone: data["phone"]as? String ?? "", gender: data["gender"]as? String ?? "", countryCode: data["country_code"]as? String ?? "", dob: data["dob"]as? String ?? "")
-                DispatchQueue.main.async {
-                    self.showToast(message: objData.toJSONString())
-                }
-        }) { (err) in
-            print(err)
-            DispatchQueue.main.async {
-            self.view.hideLoader()
-            self.showToast(message: err.debugDescription)
-            }
         }
     }
 }

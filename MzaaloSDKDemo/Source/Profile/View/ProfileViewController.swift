@@ -22,7 +22,7 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var labelFirstName: UILabel!
     @IBOutlet weak var menuButton: UIButton!
     
-    var user: MzalloUserModel?
+    var user: MzaaloUserModel?
     var menus = ["LoggedInUser", "Logout"]
     let menuDropDown = DropDown()
     
@@ -65,7 +65,8 @@ class ProfileViewController: BaseViewController {
     }
     
     func showLoggedInUser(){
-        showToast(message: user?.toJSONString() ?? "")
+        let user = getLoggedInUser()
+        showToast(message: user.toJSONString())
     }
     
     func moveToPlayerScreen(){
@@ -80,7 +81,6 @@ class ProfileViewController: BaseViewController {
             Mzaalo.sharedInstance.logOut()
             self.moveToInitial()
         }
-        
     }
     
     func moveToInitial(){
@@ -91,7 +91,6 @@ class ProfileViewController: BaseViewController {
     
     func moveToRewardScreen(){
        if let ctrl = storyboard?.instantiateViewController(identifier: "RewardViewController")as? RewardViewController{
-        ctrl.user = user
             navigationController?.pushViewController(ctrl, animated: true)
         }
     }
