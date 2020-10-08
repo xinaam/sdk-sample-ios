@@ -687,7 +687,9 @@
 			baseConfigurationReference = 8FF2ED4A1944591C65D4A2E7 /* Pods-MzaaloSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 45CM329FLR;
 				INFOPLIST_FILE = MzaaloSDKDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -697,6 +699,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mzaalo.sdk;
 				PRODUCT_NAME = "Mzaalo SDK Demo";
+				PROVISIONING_PROFILE_SPECIFIER = "Mzaalo sdk dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -707,7 +710,9 @@
 			baseConfigurationReference = CEA1301CF33AC4AE3B558DFF /* Pods-MzaaloSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 45CM329FLR;
 				INFOPLIST_FILE = MzaaloSDKDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -717,6 +722,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mzaalo.sdk;
 				PRODUCT_NAME = "Mzaalo SDK Demo";
+				PROVISIONING_PROFILE_SPECIFIER = "Mzaalo sdk dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
